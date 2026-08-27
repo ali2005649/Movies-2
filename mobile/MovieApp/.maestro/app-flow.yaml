@@ -1,0 +1,48 @@
+# Maestro E2E — open Home → movie details → assert Similar Movies
+# Run: maestro test .maestro/app-flow.yaml
+# Requires the MovieApp APK/IPA installed (bundle id below).
+
+appId: com.ali_basim.MovieApp
+---
+- launchApp:
+    clearState: true
+
+# Home screen loaded (logo / section title)
+- extendedWaitUntil:
+    visible:
+      text: "Popular Movies"
+    timeout: 30000
+
+- assertVisible: "MOVIES"
+- assertVisible: "Popular Movies"
+
+# Wait for at least one movie card from TMDB, then open details
+- extendedWaitUntil:
+    visible:
+      id: "movie-card"
+    timeout: 30000
+
+- tapOn:
+    id: "movie-card"
+    index: 0
+
+# Details screen chrome
+- extendedWaitUntil:
+    visible:
+      text: "Overview"
+    timeout: 20000
+
+- assertVisible: "Overview"
+- assertVisible: "Back"
+
+# Scroll until Similar Movies section is on screen
+- scrollUntilVisible:
+    element:
+      text: "Similar Movies"
+    direction: DOWN
+    timeout: 20000
+    centerElement: true
+
+- assertVisible: "Similar Movies"
+- assertVisible:
+    id: "similar-movies-section"
