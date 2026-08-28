@@ -2,6 +2,8 @@
   <img src="./logo.svg" alt="Movies Logo" width="120" />
   <h1>🎬 Movies</h1>
   <p>A comprehensive movie discovery platform built with a unified workspace for both Web and Mobile.</p>
+  <br />
+  <a href="https://movies-one-virid.vercel.app/"><strong>🌍 View Web Version Live</strong></a>
 </div>
 
 <br />
